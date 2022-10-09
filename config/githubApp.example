@@ -1,0 +1,20 @@
+<?php
+
+return[
+  'git' => [
+    'OAUTH_ENDPOINTS' => [
+          'INITIAL_CONNECT' => [
+            'URL' => 'https://github.com/login/oauth/authorize',
+            'METHOD_TYPE' => 'GET'
+          ],
+          'ACCESS_TOKEN' => [
+            'URL' => 'https://github.com/login/oauth/access_token',
+            'METHOD_TYPE' => 'POST'
+          ]
+    ],
+    'client_id' => 'xxx',
+    'client_secret_key' => 'xxx'
+  ]
+];
+
+// Use this format to create githubApp.php in your config folder to create config for Github OAuth
