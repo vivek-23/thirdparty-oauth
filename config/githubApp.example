@@ -13,7 +13,8 @@ return[
           ]
     ],
     'client_id' => 'xxx',
-    'client_secret_key' => 'xxx'
+    'client_secret_key' => 'xxx',
+    'redirect_uri' => 'your redirect URL'
   ]
 ];
 

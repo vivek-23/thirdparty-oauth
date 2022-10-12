@@ -6,4 +6,4 @@ require_once 'autoload.php';
 
 $gitOauth = new ThirdPartyOauth\GithubOauth();
 
-$gitOauth->login();
+echo $gitOauth->getAccessToken($_GET);
