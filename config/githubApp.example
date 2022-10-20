@@ -10,6 +10,10 @@ return[
           'ACCESS_TOKEN' => [
             'URL' => 'https://github.com/login/oauth/access_token',
             'METHOD_TYPE' => 'POST'
+          ],
+          'USER_DETAIL_ENDPOINT' => [
+            'URL' => 'https://api.github.com/user',
+            'METHOD_TYPE' => 'GET'
           ]
     ],
     'client_id' => 'xxx',

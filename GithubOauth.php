@@ -3,8 +3,9 @@
 namespace ThirdPartyOauth;
 
 use Exception;
+use ThirdPartyOauth\OAuthContract;
 
-class GithubOauth extends BaseOauth{
+class GithubOauth extends BaseOauth implements OAuthContract{
   private $clientId, $clientSecretKey;
   public function __construct(){
     parent::__construct();
@@ -53,6 +54,30 @@ class GithubOauth extends BaseOauth{
     if($curl_info['http_code'] !== 200){
       throw new Exception("Fetching access token failed!! Error received: " .$response);
     }
+    echo $response;
+    exit;
     return $response;
+  }
+
+  public function getUserDetails($accessToken){
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL,  $this->configReader->get('git.USER_DETAIL_ENDPOINT.URL'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+      'Accept:application/json',
+      'Authorization:Bearer ' . $accessToken
+    ]);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+    $info = curl_getinfo($ch);
+    if($info['http_code'] !== 200){
+      throw new \Exception("Error occurred: ". $response);
+    }
+    curl_close($ch);
+  }
+
+  public function refreshToken(){
+
   }
 }
